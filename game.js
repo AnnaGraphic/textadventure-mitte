@@ -273,80 +273,89 @@ const story = {
 };
 
 // node module to read from and write to command line
-const readline = require("readline");
+// const readline = require("readline");
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+// consimport { yellowBright } from "chalk";timport { yellowBright } from "chalk"; rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
+const fragen = document.getElementById('fragen')
+const antworten = document.getElementById('antworten')
 
-const chalk = require("chalk");
 function askQuestion(question, answers) {
-    const answersArray = Object.keys(answers);
-    //  console.log("answers array", answersArray);
-    //display question and answers // hier durchiterieren fuer mehr antworten?
+     const answersArray = Object.keys(answers);
+     console.log("answers array", answersArray);
+// display question and answers
     const prompt =
-        chalk.yellowBright`${question} \n` +
-        chalk.white(
-            `${answersArray[0]}` +
-                chalk.yellowBright` oder ` +
-                `${answersArray[1]} | `
+        `${question} \n` +
+        (`${answersArray[0]}` +
+          ` oder ` +
+          `${answersArray[1]}`
         );
-    // question = method
-    rl.question(prompt, (answer) => {
-        console.log(
-            chalk.yellowBright`Deine Antwort ist: ` +
-                chalk.greenBright(`${answer}`)
-        );
-        const data = answers[answer];
-
-        //map to lower case?
-        if (!answersArray.includes(answer)) {
-            console.log("Quatsch");
-            askQuestion(question, answers);
-        } else if (typeof data !== "object") {
-            console.log(answers[answer]);
-            rl.close();
-        } else {
-            question = data.q;
-            answers = data.answers;
-            //recursive
-            askQuestion(question, answers);
+//     // question = method
+   //rl.question(prompt, (answer) => {
+    fragen.innerText = `${question}`
+    for (let i = 0; i < answersArray.length; i++) {
+        console.log("Antwort i", answersArray[i])
+        antworten.innerHTML += "<input type='submit' value="+answersArray[i]+"><br>"
         }
-    });
+
+    //`${prompt} \n ${answer}`
+//         console.log(
+//             chalk.yellowBright`Deine Antwort ist: ` +
+//                 chalk...eenBright(`${answer}`)
+//         );
+  
+     //   const data = answers[answer];
+
+//         //map to lower case?
+        // if (!answersArray.includes(answer)) {
+        //     antwort.innerText = "Quatsch";
+        //     askQuestion(question, answers);
+        // } else if (typeof data !== "object") {
+        //     console.log(answers[answer]);
+        //     // rl.close();
+        // } else {
+        //     question = data.q;
+        //     answers = data.answers;
+        //     //recursive
+        //     askQuestion(question, answers);
+        // }
+   //});
+
+// const chalk = require("chalk");
+// function askQuestion(question, answers) {
+//     const answersArray = Object.keys(answers);
+//     //  console.log("answers array", answersArray);
+//     //  display question and answers // hier durchiterieren fuer mehr antworten?
+//     const prompt =
+//         chalk.yellowBright`${question} \n` +
+//         chalk.white(
+//             `${answersArray[0]}` +
+//                 chalk.yellowBright` oder ` +
+//                 `${answersArray[1]} | `
+//         );
+//     // question = method
+//     rl.question(prompt, (answer) => {
+//         console.log(
+//             chalk.yellowBright`Deine Antwort ist: ` +
+//                 chalk.greenBright(`${answer}`)
+//         );
+//         const data = answers[answer];
+
+//         //map to lower case?
+//         if (!answersArray.includes(answer)) {
+//             console.log("Quatsch");
+//             askQuestion(question, answers);
+//         } else if (typeof data !== "object") {
+//             console.log(answers[answer]);
+//             rl.close();
+//         } else {
+//             question = data.q;
+//             answers = data.answers;
+//             //recursive
+//             askQuestion(question, answers);
+//         }
+//     });
 }
 askQuestion(story.q, story.answers);
-
-// possibility for ascii-pics
-
-//                           __,--'\\
-//                     __,--'    :. \\
-//                _,--'              \\`.
-//               /|\\       `          \\ `.
-//              / | \\        `:        \\  `/
-//             / '|  \\        `:.       \\
-//            / , |   \\                  \\
-//           /    |:   \\              `:. \\
-//          /| '  |     \\ :.           _,-'`.
-//        \\' |,  / \\   ` \\ `:.     _,-'_|    `/
-//           '._;   \\ .   \\   `_,-'_,-'
-//         \\'    `- .\\_   |\\,-'_,-'
-//  jrei               `--|_,`'
-//                             `/
-
-//                           __,--'\
-//                     __,--'    :. \.
-//                _,--'              \`.
-//               /|\       `          \ `.
-//              / | \        `:        \  `/
-//             / '|  \        `:.       \
-//            / , |   \                  \
-//           /    |:   \              `:. \
-//          /| '  |     \ :.           _,-'`.
-//        \' |,  / \   ` \ `:.     _,-'_|    `/
-//           '._;   \ .   \   `_,-'_,-'
-//         \'    `- .\_   |\,-'_,-'
-//  jrei               `--|_,`'
-//                             `/
-
-// shortcut answers
