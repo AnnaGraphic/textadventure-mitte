@@ -273,4 +273,18 @@ const story = {
     },
 };
 
+
+
+const altStory =  {
+    1: { q: "string",
+        answers: {
+            "ja": 11,
+            "nein": 2
+        }
+    },
+    2: { q: "zweitefrage",
+ }
+}
+
+
 module.exports = story
