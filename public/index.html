@@ -12,20 +12,34 @@
     window.Stimulus = Application.start()
 
     Stimulus.register("game", class extends Controller {
-      findquestion(event) {
-        const answerValue = event.target.dataset.value;
-        console.log("hi");
-        console.log(`Hello, ${answerValue}`, this.element);
+        findquestion(event) {
+            const answerValue = event.target.dataset.value;
+            console.log("hi");
+            console.log(`Hello, ${answerValue}`, this.element);
+            fetch(location.protocol + "//" + location.host + "/public/data.yml")
+                .then((response) => response.text())
+                .then((text) => {
+                    console.log(text)
+                    try {
+                        const doc = jsyaml.load(text, 'utf8');
+                        console.log(doc);
+                        console.log(
+                            doc.start[2]
+                        )
+                    } catch (e) {
+                        console.log(e), "error";
+                    }
+            })
         };
     
     })
   </script>
 </head>
-<body>
-   <div data-controller="game" id="fragen">test
-    <br>
-    <button data-value="234" data-action="click->game#findquestion">ja</button>
-    <button data-value="119" data-action="click->game#findquestion">nein</button>
-  </div>
-</body>
+    <body>
+        <div data-controller="game" id="fragen">test
+            <br>
+            <button data-value="234" data-action="click->game#findquestion">ja</button>
+            <button data-value="119" data-action="click->game#findquestion">nein</button>
+        </div>
+    </body>
 </html>
