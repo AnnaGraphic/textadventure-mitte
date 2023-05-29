@@ -285,7 +285,7 @@ const antworten = document.getElementById('antworten')
 function askQuestion(question, answers) {
      const answersArray = Object.keys(answers);
      console.log("answers array", answersArray);
-display question and answers
+// display question and answers
     const prompt =
         `${question} \n` +
         (`${answersArray[0]}` +
