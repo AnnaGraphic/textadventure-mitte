@@ -62,15 +62,10 @@
     function renderAnswers (answersArray) {
         for (let i = 0; i < answersArray.length; i++) {
             console.log("Antwort i", answersArray[i])
-            antworten.innerHTML += "<input type='submit' value="+answersArray[i]+"><br>"
+            antworten.innerHTML += "<button type='submit' onclick='findQuestion("+answersArray[i].target+")'>"+answersArray[i].text+"</button><br>"
         }
     }
     // renderAnswers(data.start[aktuellesTarget].answers)
-
-    function clearAnswersElement() {
-        document.getElementById("answers").replaceChildren()
-    }
-
     async function ready() {
 
 
@@ -78,15 +73,19 @@
 
 
         await loadYamlData().then(
-            () => askQuestion(data.start[1].question, data.start[1].answers)
-        )
+            () => {
+                askQuestion(data.start[1].question, data.start[1].answers)
+                renderAnswers(data.start[1].answers)
+            }
 
-            console.log(12345)
+    )
+
+        console.log(12345)
         if (data.start !== undefined) {
 
         }
-            //   findQuestion(aktuellesTarget, data.start[aktuellesTarget].question)
-            //   console.log("data, aktTaret", data, aktuellesTarget)
+        //   findQuestion(aktuellesTarget, data.start[aktuellesTarget].question)
+        //   console.log("data, aktTaret", data, aktuellesTarget)
 
         // aktuelle frage bekommen - über target
 
@@ -100,6 +99,11 @@
 
 
 
+    }
+
+
+    function clearAnswersElement() {
+        document.getElementById("answers").replaceChildren()
     }
     document.addEventListener("DOMContentLoaded", ready);
 </script>
