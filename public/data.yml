@@ -1,0 +1,36 @@
+start:
+  1:
+    question: "Bist du >= 18?"
+    answers:
+      - text: "Ja"
+        target: 2
+      - text: "nein"
+        target: 3
+  2:
+    question: "Wohnst du schon in Mitte?"
+    answers:
+      - text: "Ja"
+        target: 4
+      - text: "nein"
+        target: 5
+  3:  
+    question: "Und Tschüß!"
+    answers:
+      - text: {}
+  4: 
+    question: "Was machst du sonntags?"
+    answers:
+      - text: "Weiter raven"
+        target: default
+      - text: "Flohmarkt"
+        target: 1
+  5: 
+    question: "Welche Art von Fußbodenbelag bevorzugst du?"
+    answers:
+      - text: "Haben wir noch Pappen?"
+        target: 1
+      - text: "Laminat"
+        target: 1
+  default:
+    question: "es ist vorbei"
+    
