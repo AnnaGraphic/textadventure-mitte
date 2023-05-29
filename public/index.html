@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textadventure</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js-yaml.min.js" type="module"></script>
+</head>
+<body>
+    <div id="fragen">testtext für fragen</div>
+    <br>
+    <form id="antworten" action="">
+        
+    </form> 
+    <script>
+function ready() {
+
+let data = {}
+let aktuellesTarget = {} 
+let aktuelleFrage = "";
+
+    // was passiert konkret durch async?
+    async function loadYamlData() {
+                // async gibt promise zurück = do not load if data is already loaded
+                if (data.length > 0) {
+                    return
+                }
+                fetch("data.yml")
+                    .then((response) => response.text())
+                    .then((text) => {     
+                        // console.log(text)
+                        try {
+                            data = jsyaml.load(text, 'utf8');
+                            // if (loadFirstQuestion) {
+                           console.log("data.start[1].answers[0].target)", data);
+                            // }
+
+                        } catch (e) {
+                            console.log(e), "error";
+                        }
+                    })
+                    // console.log("akt 2 ", aktuellesTarget)
+            };     
+
+    loadYamlData().then(() => {  
+                askQuestion(data.start[1].question, data.start[1].answers)                  
+            //   findQuestion(aktuellesTarget, data.start[aktuellesTarget].question)
+            //   console.log("data, aktTaret", data, aktuellesTarget)
+
+       })
+                
+            // aktuelle frage bekommen - über target
+
+    const fragen = document.getElementById('fragen')
+    console.log("fragen", fragen)
+
+    const antworten = document.getElementById('antworten')
+    console.log("antworen", antworten)
+    // leer - wird gelogt bevor data gefetcht wird?
+    console.log(aktuellesTarget)
+
+    function findQuestion(target, data){
+        aktuelleFrage = data
+        console.log("findQuestion", target, data, aktuelleFrage)
+    }
+
+    function askQuestion(question, answers) {
+        // const answersArray = Object.keys(answers);
+        // console.log("answers array", answersArray);
+        console.log(question)
+        fragen.innerText = `${question}`
+        
+        }    
+  //  askQuestion(aktuelleFrage, "antwort")
+
+    function renderAnswers (answersArray) {
+    for (let i = 0; i < answersArray.length; i++) {
+            console.log("Antwort i", answersArray[i])
+            antworten.innerHTML += "<input type='submit' value="+answersArray[i]+"><br>"
+            }
+    }
+    // renderAnswers(data.start[aktuellesTarget].answers)
+
+    function clearAnswersElement() {
+                document.getElementById("answers").replaceChildren()
+            }
+
+}
+    document.addEventListener("DOMContentLoaded", ready);
+    </script>
+</body>
+</html>
