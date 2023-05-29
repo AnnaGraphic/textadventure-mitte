@@ -11,84 +11,60 @@
 <body>
     <div id="fragen">testtext für fragen</div>
     <br>
-    <form id="antworten" action="">
-        
-    </form> 
+    <div id="antworten" >
+    </div> 
     <script>
-function ready() {
+        let data = {};
+        let aktuelleFrage = "";
+        const fragen = document.getElementById('fragen')
+        // console.log("fragen", fragen)
+        const antworten = document.getElementById('antworten')
+        console.log("antworen", antworten)
 
-let data = {}
-let aktuellesTarget = {} 
-let aktuelleFrage = "";
-
-    // was passiert konkret durch async?
-    async function loadYamlData() {
+            async function loadYamlData() {
                 // async gibt promise zurück = do not load if data is already loaded
                 if (data.length > 0) {
                     return
                 }
-                fetch("data.yml")
-                    .then((response) => response.text())
-                    .then((text) => {     
-                        // console.log(text)
-                        try {
-                            data = jsyaml.load(text, 'utf8');
-                            // if (loadFirstQuestion) {
-                           console.log("data.start[1].answers[0].target)", data);
-                            // }
+                const response = await fetch(location.protocol + "//" + location.host + "/public/data.yml")
+                const body = await response.text()
+                data = jsyaml.load(body, 'utf8')
+            };        
 
-                        } catch (e) {
-                            console.log(e), "error";
-                        }
-                    })
-                    // console.log("akt 2 ", aktuellesTarget)
-            };     
+            function findQuestion(target){
+                aktuelleFrage = data.start[target].question;
+                askQuestion(aktuelleFrage);
+                clearAnswersElement();
+                renderAnswers(data.start[target].answers)
+                console.log("findQuestion", target, data, aktuelleFrage)
+            }
 
-    loadYamlData().then(() => {  
-                askQuestion(data.start[1].question, data.start[1].answers)                  
-            //   findQuestion(aktuellesTarget, data.start[aktuellesTarget].question)
-            //   console.log("data, aktTaret", data, aktuellesTarget)
+            function askQuestion(question) {
+                console.log(question)
+                fragen.innerText = `${question}`
+                }
 
-       })
-                
-            // aktuelle frage bekommen - über target
+            function renderAnswers (answersArray) {
+                for (let i = 0; i < answersArray.length; i++) {
+                    console.log("Antwort i", answersArray[i])
+                    antworten.innerHTML += "<button onclick='findQuestion("+answersArray[i].target+")'>"+answersArray[i].text+"</button><br>"
+                }
+            }
 
-    const fragen = document.getElementById('fragen')
-    console.log("fragen", fragen)
-
-    const antworten = document.getElementById('antworten')
-    console.log("antworen", antworten)
-    // leer - wird gelogt bevor data gefetcht wird?
-    console.log(aktuellesTarget)
-
-    function findQuestion(target, data){
-        aktuelleFrage = data
-        console.log("findQuestion", target, data, aktuelleFrage)
-    }
-
-    function askQuestion(question, answers) {
-        // const answersArray = Object.keys(answers);
-        // console.log("answers array", answersArray);
-        console.log(question)
-        fragen.innerText = `${question}`
+            function clearAnswersElement() {
+                        document.getElementById("antworten").replaceChildren()
+                    }
         
-        }    
-  //  askQuestion(aktuelleFrage, "antwort")
-
-    function renderAnswers (answersArray) {
-    for (let i = 0; i < answersArray.length; i++) {
-            console.log("Antwort i", answersArray[i])
-            antworten.innerHTML += "<input type='submit' value="+answersArray[i]+"><br>"
-            }
-    }
-    // renderAnswers(data.start[aktuellesTarget].answers)
-
-    function clearAnswersElement() {
-                document.getElementById("answers").replaceChildren()
-            }
-
-}
-    document.addEventListener("DOMContentLoaded", ready);
+            // async damit ich await sagen kann
+            // aller erste frage:
+            async function ready() {
+                await loadYamlData()
+                .then(() => { 
+                    askQuestion(data.start[1].question, data.start[1].answers)                  
+                    renderAnswers(data.start[1].answers)
+            })
+        }
+        document.addEventListener("DOMContentLoaded", ready);
     </script>
 </body>
 </html>
