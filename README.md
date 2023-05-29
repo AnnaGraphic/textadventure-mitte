@@ -1,7 +1,7 @@
 # textadventure-mitte
-an text adventure game about the adventurous flat hunt in Berlin Mitte
+house: A text adventure game about the adventurous flat hunt in Berlin Mitte hut:
 
-TODO
+# TODO
 - nice css
 - responsive css
 - header
