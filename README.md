@@ -4,6 +4,4 @@
 ## TODO
 - nice css
 - responsive css
-- header
 - find domain
-- build yaml
