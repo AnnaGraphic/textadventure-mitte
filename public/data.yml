@@ -71,7 +71,7 @@ start:
       - text: "Ich tanze auf meherern Hochzeiten gleichzeitig."
         target: 18
       - text: "Park, da ich wegen meiner ständigen Kotzerei WG-Verbot habe."
-        taarget: 7
+        target: 7
   11:
     question: "Wo bestellst du?"
     answers:
