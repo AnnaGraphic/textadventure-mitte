@@ -1,0 +1,199 @@
+start:
+  1:
+    question: "Bist du >= 18?"
+    answers:
+      - text: "Ja"
+        target: 2
+      - text: "nein"
+        target: 3
+  2:
+    question: "Wohnst du schon in Mitte?"
+    answers:
+      - text: "Ja"
+        target: 4
+      - text: "nein"
+        target: 5
+  3:
+    question: "Und Tschüß!"
+    answers:
+      - text: {}
+  4:
+    question: "Was machst du sonntags?"
+    answers:
+      - text: "Weiter raven"
+        target: 6
+      - text: "Flohmarkt"
+        target: 7
+  5:
+    question: "Welche Art von Fußbodenbelag bevorzugst du?"
+    answers:
+      - text: "Haben wir noch Pappen?" # geht nicht auf
+        target: 27
+      - text: "Laminat"
+        target: 35
+      - text: "Parkett"
+        target: 36
+  6:
+    question: "Womit hälst du dich wach?"
+    answers:
+      - text: "Angst"
+        target: 8
+      - text: "Koxtaxi"
+        target: 9
+      - text: "Cold Brew Nitro Coffee"
+        target: 10
+  7:
+    question: "Du triffst Christian Lindner auf dem Flohmarkt. Wie fühlst du dich?"
+    answers:
+      - text: "Abgehängt, denn er hat mir 3.000 € Kronleuchter vor der Nase weggeschnappt!"
+        target: 11
+      - text: "Wie er. Denn er hat keine Wohnung in Mitte gefunden und musste nach Schöneberg ziehen. Grausam!"
+        target: 12
+  8:
+    question: "Bist du moralisch flexibel?"
+    answers:
+      - text: "Mal so, mal so."
+        target: 13
+      - text: "Kommt drauf an, wo die Heizung steht."
+        target: 14
+      - text: "Das ist XXXX" # hier fehlt was
+        target: 15
+  9:
+    question: "Wo sitzt du dort?"
+    answers:
+      - text: "Fahrersitz"
+        target: 16
+      - text: "Hinten"
+        target: 17
+  10:
+    question: "Wo feierst du am liebsten?"
+    answers:
+      - text: "Ich tanze auf meherern Hochzeiten gleichzeitig."
+        target: 18
+      - text: "Park, da ich wegen meiner ständigen Kotzerei WG-Verbot habe."
+        target: 7
+  11:
+    question: "Wo bestellst du?"
+    answers:
+      - text: "Koxtaxi"
+        target: 12
+      - text: "Bei dem Typen in Eile mit dem orangenen Kasten auf dem Fahrrad."
+        target: 19
+  12:
+    question: "Online oder offline?"
+    answers:
+      - text: "Verbindungsprobleme"
+        target: 22
+      - text: "Beziehungsprobleme"
+        target: 23
+  13:
+    question: "Du verstößt regelmäßig gegen Gesetze?"
+    answers:
+      - text: "Kommt auf die Definition an."
+        target: 15
+      - text: "Ja."
+        target: 25
+  14:
+    question: "XXXXXX"
+  15:
+    question: "Du ziehst in Bellevue ein."
+    answers:
+      - text: {}
+  16:
+    question: ""
+    answers:
+      - text: {}
+  17:
+    question: "Wie bewegst du dich fort?"
+    answers:
+      - text: "Leasingwagen"
+        target: 10
+      - text: "Ich werde in blau-weißen Autos gefahren."
+        target: 16
+  18:
+    question: "Was ist das Schönste an einer Reise für dich?"
+    answers:
+      - text: "Der Trip!"
+        target: 12
+      - text: "Buisness Class"
+        target: 23
+  19:
+    question: "Was ist dein Lieblingstier?"
+    answers:
+      - text: "Bettwanze"
+        target: 22
+      - text: "Pfennigfuchs"
+        target: 26
+  22:
+    question: "Du ziehst in ein Student Hostel"
+    answers:
+      - text: {}
+  23:
+    question: "Du ziehst in ein Start Up"
+    answers:
+      - text: {}
+  25:
+    question: "Lässt du dich dabei erwischen?"
+    answers:
+      - text: "ja"
+        target: 16
+      - text: "nein"
+        target: 15
+  26:
+      question: "Du ziehst ins Durchgangszimmer"
+      answers:
+        - text: {}
+  27:
+    question: "Haben wir noch Pappen?"
+    answers:
+      - text: "<2cm²"
+        target: 28
+      - text: ">2cm²"
+        target: 29
+  28:
+    question: "Insta oder Tinder?"
+    answers:
+      - text: "Alles, was mein Ego pusht"
+        target: 30
+  29:
+    question: "Lieber Arm ab oder arm dran?"
+    answers:
+      - text: "Arm dran"
+        target: 31
+      - text: "Arm ab"
+        target: 32
+  30:
+    question: "Fühlst du dich manchmal beobachtet?"
+    answers:
+        - text: "Ständig"
+          target: 33
+        - text: "Nur, wenn ich zuviel Pappen hatte."
+          target: 19
+  31:
+    question: "Du ziehst ins Zelt."
+    answers:
+        - text: {}
+  32:
+    question: "Hast du den Herd angelassen?"
+    answers:
+      - text: "Nicht mein Job."
+        target: # hier fehlt was
+      - text: "Was ist ein Herd?"
+        target: 34
+  33:
+    question: "Teilst du deine Sachen gern mit anderen?"
+    answers:
+      - text: "Ich mag's, wenn mir Leute beim Sex zuschauen."
+        target: 26
+          # 28
+          # 16 JVA
+          # 22 student hostel
+          # 23 start up
+          # 26 durchgangszimmer
+          # 15 bellevue
+          # 31 Zelt
+  default:
+    question: "Es ist vorbei."
+    answers:
+      - text: {}
+
