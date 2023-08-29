@@ -4,10 +4,11 @@
     --background-color: black;
     --dark: rgb(41, 41, 41);
 }
-*{
+* {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body {
     color: var(--main-color);
@@ -16,15 +17,14 @@ body {
     flex-direction: column;
     width: 100vw;
 }
-#header{
+#header {
     display: flex;
     font-family: Verdana;
     font-weight: bold;
     font-size: larger;
-    height: 3.5rem;
+    height: 3.2em;
     border-bottom: dashed 1px;
     color: var(--secondary-color);
-    padding: 1rem 1rem 1rem 2rem;
     margin-bottom: 0.5rem;
     flex-direction: row;
     justify-content: center;
@@ -32,12 +32,20 @@ body {
 #header h1 {
     align-self: center;
 }
-
+#header a {
+    text-decoration-line: none;
+    color: var(--secondary-color);
+}
 main {
     width: 75ch;
     color: var(--main-color);
     align-self: center;
-
+    padding: 0.5rem;
+}
+div #fragen {
+    display: flex;
+    min-height: ;
+    align-self: baseline;
 }
 .answerbutton {
     padding: 0.3rem;
@@ -46,10 +54,19 @@ main {
     margin: 0.2rem;
     border: 0px;
     box-shadow: inset 0 0 0 0.05rem var(--main-color);
-    border-radius: 10%;
+    border-radius: 0.5em;
 }
 .answerbutton:hover{
     color: var(--secondary-color);
     box-shadow: inset 0 0 0 0.06rem var(--secondary-color);
     background-color: var(--dark);
+}
+
+/* ---------- MEDIA QUERIES -------- */
+
+@media screen and (max-width: 916px) {
+    main {
+        width: 95vw;
+        padding: 2.5vw 05.rem 05rem 2.5vh;
+    }
 }
