@@ -28,7 +28,7 @@
                     if (data.length > 0) {
                         return
                     }
-                    const response = await fetch(location.protocol + "//" + location.host + "/public/data.yml")
+                    const response = await fetch('data.yml')
                     const body = await response.text()
                     data = jsyaml.load(body, 'utf8')
                 };
