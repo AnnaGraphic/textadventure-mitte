@@ -42,11 +42,11 @@
                 function askQuestion(question) {
                     console.log(question)
                     fragen.innerText = `${question}`
-                    }
                 function renderAnswers (answersArray) {
                     for (let i = 0; i < answersArray.length; i++) {
-                        console.log("Antwort i", answersArray[i])
-                        antworten.innerHTML += "<button class='answerbutton' onclick='findQuestion("+answersArray[i].target+")'>"+answersArray[i].text+"</button><br>"
+                        if (answersArray[i]["text"].length > 0) {
+                            antworten.innerHTML += "<button class='answerbutton' onclick='findQuestion("+answersArray[i].target+")'>"+answersArray[i].text+"</button><br>"
+                        }
                     }
                 }
                 function clearAnswersElement() {
