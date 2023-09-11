@@ -61,7 +61,11 @@ div #fragen {
     box-shadow: inset 0 0 0 0.06rem var(--secondary-color);
     background-color: var(--dark);
 }
-
+footer {
+ position: fixed;
+ bottom: 0;
+ padding: 1rem;
+}
 /* ---------- MEDIA QUERIES -------- */
 
 @media screen and (max-width: 916px) {

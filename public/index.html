@@ -13,57 +13,61 @@
        <h1><a href="index.html">flathunt in mitte</a></h1> 
     </section>
     <main>
-        <div id="fragen">testtext für fragen</div>
+        <div id="fragen"></div>
         <div id="antworten" >
         </div>
-        <script>
-            let data = {};
-            let aktuelleFrage = "";
-            const fragen = document.getElementById('fragen')
-            // console.log("fragen", fragen)
-            const antworten = document.getElementById('antworten')
-            console.log("antworen", antworten)
-                async function loadYamlData() {
-                    // async gibt promise zurück = do not load if data is already loaded
-                    if (data.length > 0) {
-                        return
-                    }
-                    const response = await fetch('data.yml')
-                    const body = await response.text()
-                    data = jsyaml.load(body, 'utf8')
-                };
-                function findQuestion(target){
-                    aktuelleFrage = data.start[target].question;
-                    askQuestion(aktuelleFrage);
-                    clearAnswersElement();
-                    renderAnswers(data.start[target].answers)
-                    console.log("findQuestion", target, data, aktuelleFrage)
-                }
-                function askQuestion(question) {
-                    console.log(question)
-                    fragen.innerText = `${question}`
-                function renderAnswers (answersArray) {
-                    for (let i = 0; i < answersArray.length; i++) {
-                        if (answersArray[i]["text"].length > 0) {
-                            antworten.innerHTML += "<button class='answerbutton' onclick='findQuestion("+answersArray[i].target+")'>"+answersArray[i].text+"</button><br>"
-                        }
-                    }
-                }
-                function clearAnswersElement() {
-                            document.getElementById("antworten").replaceChildren()
-                        }
-        
-                // async damit ich await sagen kann
-                // aller erste frage:
-                async function ready() {
-                    await loadYamlData()
-                    .then(() => {
-                        askQuestion(data.start[1].question, data.start[1].answers)
-                        renderAnswers(data.start[1].answers)
-                })
-            }
-            document.addEventListener("DOMContentLoaded", ready);
-        </script>
     </main>
+    <footer>
+        <a href="https://github.com/AnnaGraphic/textadventure-mitte" target="_blank">see code on GitHub</a>
+    </footer>
+    <script>
+        let data = {};
+        let aktuelleFrage = "";
+        const fragen = document.getElementById('fragen')
+        // console.log("fragen", fragen)
+        const antworten = document.getElementById('antworten')
+        console.log("antworen", antworten)
+            async function loadYamlData() {
+                // async gibt promise zurück = do not load if data is already loaded
+                if (data.length > 0) {
+                    return
+                }
+                const response = await fetch('data.yml')
+                const body = await response.text()
+                data = jsyaml.load(body, 'utf8')
+            };
+            function findQuestion(target){
+                aktuelleFrage = data.start[target].question;
+                askQuestion(aktuelleFrage);
+                clearAnswersElement();
+                renderAnswers(data.start[target].answers)
+                console.log("findQuestion", target, data, aktuelleFrage)
+            }
+            function askQuestion(question) {
+                console.log(question)
+                fragen.innerText = `${question}`
+            }
+            function renderAnswers (answersArray) {
+                for (let i = 0; i < answersArray.length; i++) {
+                    console.log("Antwort i", answersArray[i]);
+                    if (answersArray[i]["text"].length > 0) {
+                        antworten.innerHTML += "<button class='answerbutton' onclick='findQuestion("+answersArray[i].target+")'>"+answersArray[i].text+"</button><br>"
+                    }
+                }
+            }
+            function clearAnswersElement() {
+                        document.getElementById("antworten").replaceChildren()
+                    }
+            // aller erste frage:
+            async function ready() {
+                await loadYamlData()
+                .then(() => {
+                    askQuestion(data.start[1].question, data.start[1].answers)
+                    renderAnswers(data.start[1].answers)
+            })
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+    </script>
 </body>
 </html>
+
