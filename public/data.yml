@@ -27,7 +27,7 @@ start:
   5:
     question: "Welche Art von Fußbodenbelag bevorzugst du?"
     answers:
-      - text: "Haben wir noch Pappen?" # geht nicht auf
+      - text: "Haben wir noch Pappen?" 
         target: 27
       - text: "Laminat"
         target: 35
@@ -55,9 +55,9 @@ start:
       - text: "Mal so, mal so."
         target: 13
       - text: "Kommt drauf an, wo die Heizung steht."
-        target: 14
-      - text: "Das ist XXXX" # hier fehlt was
-        target: 15
+        target: 11
+     # - text: "Das ist XXXX" # hier fehlt was
+     #   target: 15
   9:
     question: "Wo sitzt du dort?"
     answers:
@@ -90,7 +90,7 @@ start:
     question: "Du verstößt regelmäßig gegen Gesetze?"
     answers:
       - text: "Kommt auf die Definition an."
-        target: 15
+        target: 18 
       - text: "Ja."
         target: 25
   14:
@@ -98,9 +98,8 @@ start:
   15:
     question: "Du ziehst in Bellevue ein."
     answers:
-      - text: {}
   16:
-    question: ""
+    question: "Du kommst in die JVA"
     answers:
       - text: {}
   17:
@@ -108,14 +107,14 @@ start:
     answers:
       - text: "Leasingwagen"
         target: 10
-      - text: "Ich werde in blau-weißen Autos gefahren."
+      - text: "Ich werde gefahren. Im blau-weißen Party-Bus."
         target: 16
   18:
     question: "Was ist das Schönste an einer Reise für dich?"
     answers:
       - text: "Der Trip!"
         target: 12
-      - text: "Buisness Class"
+      - text: "Business Class"
         target: 23
   19:
     question: "Was ist dein Lieblingstier?"
@@ -127,11 +126,9 @@ start:
   22:
     question: "Du ziehst in ein Student Hostel"
     answers:
-      - text: {}
   23:
     question: "Du ziehst in ein Start Up"
     answers:
-      - text: {}
   25:
     question: "Lässt du dich dabei erwischen?"
     answers:
@@ -142,7 +139,6 @@ start:
   26:
       question: "Du ziehst ins Durchgangszimmer"
       answers:
-        - text: {}
   27:
     question: "Haben wir noch Pappen?"
     answers:
@@ -172,7 +168,6 @@ start:
   31:
     question: "Du ziehst ins Zelt."
     answers:
-        - text: {}
   32:
     question: "Hast du den Herd angelassen?"
     answers:
@@ -185,7 +180,30 @@ start:
     answers:
       - text: "Ich mag's, wenn mir Leute beim Sex zuschauen."
         target: 26
-          # 28
+  34:
+    question: "Bist du allgemein so vergesslich?"
+    answers:
+      - text: "Ich vergess alles, was nicht zwischen zwei Bäumen im Tiergarten festgemacht ist."
+        target: 31
+      - text: "Nur wenn's um CumEx geht"
+        target: 15
+  35:
+    question: "Womit zahlst Du?"
+    answers:
+      - text: "Bitcoin"
+        target: 7
+      - text: "Gar nicht"
+        target: 30
+      - text: "Mit dem Taschengeld meiner Eltern"
+        target: 11
+  36:
+    question: "Was sind deine Freizeitaktivitäten"
+    answers:
+      - text: "Wohnunsbesichtigungen"
+        target: 32
+      - text: "Was ist Freizeit?"
+        target: 6
+          # 28 - nur 1 antwort
           # 16 JVA
           # 22 student hostel
           # 23 start up
