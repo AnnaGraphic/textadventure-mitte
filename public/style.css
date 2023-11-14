@@ -10,6 +10,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* general rules */
+.die {
+    color: white;
+    font-size: large;
+}
+.partei {
+    color: red;
+}
+
+/* sections */
 body {
     color: var(--main-color);
     background-color: var(--background-color);
@@ -27,7 +37,7 @@ body {
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 }
 #header h1 {
     align-self: center;
@@ -35,6 +45,14 @@ body {
 #header a {
     text-decoration-line: none;
     color: var(--secondary-color);
+}
+h2 {
+    align-items: center;
+    display: flex;
+}
+#header h2 a {
+    display: flex;
+    flex-direction: row;
 }
 main {
     width: 75ch;
@@ -44,7 +62,7 @@ main {
 }
 div #fragen {
     display: flex;
-    min-height: ;
+    min-height: fit-content;
     align-self: baseline;
 }
 .answerbutton {
@@ -62,9 +80,29 @@ div #fragen {
     background-color: var(--dark);
 }
 footer {
- position: fixed;
- bottom: 0;
- padding: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+}
+footer button {
+    width: 8em;
+    color: var(--main-color);
+    background-color: black;
+    border: 1px solid var(--main-color);
+    border-radius: 0.5em;
+    padding: 0.32em;
+}
+footer button:hover {
+    background-color: var(--dark);
+    transition: all 100ms;
+}
+footer button:active {
+    padding: 0.29em;
+    color: var(--secondary-color);
+    transition: all 100ms;
 }
 /* ---------- MEDIA QUERIES -------- */
 
