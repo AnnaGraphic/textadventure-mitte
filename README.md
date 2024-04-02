@@ -5,3 +5,4 @@
 - write tests
 - improve text
 - add ASCII art
+- center reset button
