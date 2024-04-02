@@ -81,7 +81,7 @@ div #fragen {
 }
 footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100vw;
     position: fixed;
     bottom: 0;
